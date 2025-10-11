@@ -2,6 +2,8 @@ let imagenes = [];
 let estado = 0;
 let textos =[];
 let miFuente;
+let sonido;
+
 
 function preload() {
   for (let i = 0; i < 18; i++) {
@@ -9,19 +11,22 @@ function preload() {
     
   }
     textos = loadStrings('data/textos.txt');
-
-   miFuente = loadFont ("data/miFuente.ttf");
+    miFuente = loadFont ("data/miFuente.ttf");
+    sonido = loadSound ('data/intro.mp3');
    
  }
 function setup() {
   createCanvas(640, 480);
   textFont(miFuente);
+  sonido.setVolume(0.3); 
 }
 
 function draw() {
   if (estado===0) {
     pantalla(imagenes[0],"",100,100, 450, 375, 150, 50, "Comenzar turno");
     boton(30, 375, 100, 50, "Creditos");
+    let textoMusica = sonido.isPlaying() ? "Detener música" : "Activar música";
+    boton(450, 150, 150, 40, textoMusica);
   }
 
   if (estado===1) {
@@ -103,7 +108,14 @@ if (estado === 13) {
 
 
 function mousePressed() { 
-  if (estado === 0 && overMouse(450, 375, 150, 50)) {
+   if (estado === 0 && overMouse(450, 150, 150, 40)) {
+  if (sonido.isPlaying()) {
+    sonido.stop();
+  } else {
+    sonido.play();
+  }
+}
+if (estado === 0 && overMouse(450, 375, 150, 50)) {
     estado = 1; 
   }
  if (estado === 0 && overMouse(30, 375, 100, 50)) {
@@ -225,3 +237,4 @@ function pantalla (imagen, texto, posX, posY, posXB, posYB, tamXB, tamYB, textoB
   boton(posXB, posYB, tamXB, tamYB, textoB);
 
 }
+
