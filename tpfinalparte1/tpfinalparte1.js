@@ -1,3 +1,6 @@
+//enlace a youtube: https://youtu.be/k15R-UVEHMI 
+
+
 let imagenes =[];
 let estado = 0;
 let textos =[];
@@ -242,3 +245,4 @@ function pantalla (imagen, texto, posX, posY, posXB, posYB, tamXB, tamYB, textoB
   boton(posXB, posYB, tamXB, tamYB, textoB);
 
 }
+
