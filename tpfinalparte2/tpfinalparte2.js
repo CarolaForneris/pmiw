@@ -1,3 +1,5 @@
+//https://youtu.be/mPfVvy92xQw
+
 let videojuego;
 let media, mounstro, meg;
 let fondos = [];
@@ -38,3 +40,4 @@ function keyPressed() {
 function mousePressed() {
   videojuego.manejarClic(mouseX, mouseY);
 }
+
